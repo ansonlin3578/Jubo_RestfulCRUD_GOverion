@@ -26,17 +26,17 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 
 	// Register Routes
-	RegisterProductRoutes(router)
+	RegisterTodoRoutes(router)
 
 	// Start the server
 	log.Println(fmt.Sprintf("Starting Server on port %s", AppConfig.Port))
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", AppConfig.Port), router))
 }
 
-func RegisterProductRoutes(router *mux.Router) {
-	router.HandleFunc("/api/products", controllers.GetProducts).Methods("GET")
-	router.HandleFunc("/api/products/{id}", controllers.GetProductById).Methods("GET")
-	router.HandleFunc("/api/products", controllers.CreateProduct).Methods("POST")
-	router.HandleFunc("/api/products/{id}", controllers.UpdateProduct).Methods("PUT")
-	router.HandleFunc("/api/products/{id}", controllers.DeleteProduct).Methods("DELETE")
+func RegisterTodoRoutes(router *mux.Router) {
+	router.HandleFunc("/api/products", controllers.GetTodos).Methods("GET")
+	router.HandleFunc("/api/products/{id}", controllers.GetTodoById).Methods("GET")
+	router.HandleFunc("/api/products", controllers.CreateTodo).Methods("POST")
+	router.HandleFunc("/api/products/{id}", controllers.UpdateTodo).Methods("PUT")
+	router.HandleFunc("/api/products/{id}", controllers.DeleteTodo).Methods("DELETE")
 }

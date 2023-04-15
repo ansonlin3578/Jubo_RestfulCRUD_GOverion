@@ -1,8 +1,9 @@
 package entities
 
-type Product struct {
+type Todo struct {
 	ID          uint    `json:"id"`
-	Name        string  `json:"name"`
-	Price       float64 `json:"price"`
+	Title        string  `json:"title"`
+	CreatedAt       string `json:"created_at"`
 	Description string  `json:"description"`
+	Completed bool `json:"completed"`
 }

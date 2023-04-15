@@ -5,69 +5,75 @@ import (
 	"golang-crud-rest-api/database"
 	"golang-crud-rest-api/entities"
 	"net/http"
-
+	
 	"github.com/gorilla/mux"
+	"time"
+	"fmt"
 )
 
-func CreateProduct(w http.ResponseWriter, r *http.Request) {
+func CreateTodo(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var product entities.Product
-	json.NewDecoder(r.Body).Decode(&product)
-	database.Instance.Create(&product)
-	json.NewEncoder(w).Encode(product)
+	var todo entities.Todo
+	now := time.Now()
+	t_string := now.String()
+	todo.CreatedAt = t_string
+	fmt.Println(t_string)
+	json.NewDecoder(r.Body).Decode(&todo)
+	database.Instance.Create(&todo)
+	json.NewEncoder(w).Encode(todo)
 }
 
-func GetProductById(w http.ResponseWriter, r *http.Request) {
-	productId := mux.Vars(r)["id"]
-	if checkIfProductExists(productId) == false {
-		json.NewEncoder(w).Encode("Product Not Found!")
+func GetTodoById(w http.ResponseWriter, r *http.Request) {
+	todoID := mux.Vars(r)["id"]
+	if checkIfTodoExists(todoID) == false {
+		json.NewEncoder(w).Encode("Todo Not Found!")
 		return
 	}
-	var product entities.Product
-	database.Instance.First(&product, productId)
+	var todo entities.Todo
+	database.Instance.First(&todo, todoID)
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(product)
+	json.NewEncoder(w).Encode(todo)
 }
 
-func GetProducts(w http.ResponseWriter, r *http.Request) {
-	var products []entities.Product
+func GetTodos(w http.ResponseWriter, r *http.Request) {
+	var products []entities.Todo
 	database.Instance.Find(&products)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(products)
 }
 
-func UpdateProduct(w http.ResponseWriter, r *http.Request) {
-	productId := mux.Vars(r)["id"]
-	if checkIfProductExists(productId) == false {
-		json.NewEncoder(w).Encode("Product Not Found!")
+func UpdateTodo(w http.ResponseWriter, r *http.Request) {
+	todoID := mux.Vars(r)["id"]
+	if checkIfTodoExists(todoID) == false {
+		json.NewEncoder(w).Encode("Todo Not Found!")
 		return
 	}
-	var product entities.Product
-	database.Instance.First(&product, productId)
-	json.NewDecoder(r.Body).Decode(&product)
-	database.Instance.Save(&product)
+	var todo entities.Todo
+	database.Instance.First(&todo, todoID)
+	json.NewDecoder(r.Body).Decode(&todo)
+	database.Instance.Save(&todo)
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(product)
+	json.NewEncoder(w).Encode(todo)
 }
 
-func DeleteProduct(w http.ResponseWriter, r *http.Request) {
+func DeleteTodo(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	productId := mux.Vars(r)["id"]
-	if checkIfProductExists(productId) == false {
+	todoID := mux.Vars(r)["id"]
+	if checkIfTodoExists(todoID) == false {
 		w.WriteHeader(http.StatusNotFound)
-		json.NewEncoder(w).Encode("Product Not Found!")
+		json.NewEncoder(w).Encode("Todo Not Found!")
 		return
 	}
-	var product entities.Product
-	database.Instance.Delete(&product, productId)
-	json.NewEncoder(w).Encode("Product Deleted Successfully!")
+	var todo entities.Todo
+	database.Instance.Delete(&todo, todoID)
+	json.NewEncoder(w).Encode("Todo Deleted Successfully!")
 }
 
-func checkIfProductExists(productId string) bool {
-	var product entities.Product
-	database.Instance.First(&product, productId)
-	if product.ID == 0 {
+func checkIfTodoExists(todoID string) bool {
+	var todo entities.Todo
+	database.Instance.First(&todo, todoID)
+	if todo.ID == 0 {
 		return false
 	}
 	return true
