@@ -1,8 +1,8 @@
 # Implementing CRUD in GoLang REST API
 
-# Jubo_intern_RESTful_CRUD
+## Jubo_intern_RESTful_CRUD
 intern_HomeWork
-Use nodeJS & Express framework to construct a RESTful API with CRUD function
+Use Golang & GORMux framework to construct a RESTful API with CRUD function
 
 # Documentation
 ## How to run the project
