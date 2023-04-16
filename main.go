@@ -34,9 +34,9 @@ func main() {
 }
 
 func RegisterTodoRoutes(router *mux.Router) {
-	router.HandleFunc("/api/products", controllers.GetTodos).Methods("GET")
-	router.HandleFunc("/api/products/{id}", controllers.GetTodoById).Methods("GET")
-	router.HandleFunc("/api/products", controllers.CreateTodo).Methods("POST")
-	router.HandleFunc("/api/products/{id}", controllers.UpdateTodo).Methods("PUT")
-	router.HandleFunc("/api/products/{id}", controllers.DeleteTodo).Methods("DELETE")
+	router.HandleFunc("/api/Todos", controllers.GetTodos).Methods("GET")
+	router.HandleFunc("/api/Todos/{id}", controllers.GetTodoById).Methods("GET")
+	router.HandleFunc("/api/Todos", controllers.CreateTodo).Methods("POST")
+	router.HandleFunc("/api/Todos/{id}", controllers.UpdateTodo).Methods("PUT")
+	router.HandleFunc("/api/Todos/{id}", controllers.DeleteTodo).Methods("DELETE")
 }
