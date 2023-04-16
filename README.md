@@ -7,15 +7,22 @@ Use Golang & GORMux framework to construct a RESTful API with CRUD function
 # Documentation
 ## How to run the project
 1. clone this repository in a root folder
-2. install the nodeJS (12.2.2 version or above)
-3. run "node main.js" in CLI, you will see "Port 3000 in Listening!!"  
-![image](https://user-images.githubusercontent.com/78125534/232205410-ebeac99b-826c-4cf5-bb52-7d8e5d07300b.png)  
-4. you have started the web server sucessfully!
+2. install the Golang (1.18.1 version or above)
+3. open the "config.json" in root directory, and change "connection_string" to your development machine. I recommand you to use Mysql and follow the string rule by:  
+"[username]:[pw]@tcp([HOST]:[port])/[databaseName]"
+![connection_string](https://user-images.githubusercontent.com/78125534/232267566-0f177704-581a-47f9-952e-b497b122ec89.png)
+4. run "go build ." and "go run ."in CLI, you will see    
+![image](https://user-images.githubusercontent.com/78125534/232269109-5263bf4c-3555-4851-91af-3bb69b379377.png)
+5. you have started the web server sucessfully!
 
 ## Interact with the Web server
-1. [GET]/todos：  
-Open the chorme tab and type the url "http://localhost:3000/Todos", you will see the Home Page:
-![image](https://user-images.githubusercontent.com/78125534/232205800-956c7404-92f5-4c69-9912-bbe6bf5bce2b.png)
+### Use "Postman" to interact with the webserver:
+![get](https://user-images.githubusercontent.com/78125534/232272516-d8f0bb52-866a-4665-9f33-18b350dd3c17.png)
+
+1. [GET]/api/todos：  
+Open the chorme tab and type the url "http://localhost:8080/api/Todos", you will see the total todos:
+![get_2](https://user-images.githubusercontent.com/78125534/232272667-c7360462-0748-4b79-8e7e-3f346b236e34.png)
+
 ---
 2. [GET]/todos/: id:  
 Click "details" behind the Description each Todo:
