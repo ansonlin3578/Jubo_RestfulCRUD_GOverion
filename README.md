@@ -16,47 +16,36 @@ Use Golang & GORMux framework to construct a RESTful API with CRUD function
 5. you have started the web server sucessfully!
 
 ## Interact with the Web server
-### Use "Postman" to interact with the webserver:
+### Use "Postman" to interact with the webserver:![image](https://user-images.githubusercontent.com/78125534/232278096-9e382e63-d29b-4f22-a0fe-2cad8b49a649.png)
 ![get](https://user-images.githubusercontent.com/78125534/232272516-d8f0bb52-866a-4665-9f33-18b350dd3c17.png)
 
 1. [GET]/api/todos：  
-Open the chorme tab and type the url "http://localhost:8080/api/Todos", you will see the total todos:
+Use HTTP verb "GET" and type the url "http://localhost:8080/api/Todos", then click "send" and you will see the total todos:
 ![get_2](https://user-images.githubusercontent.com/78125534/232272667-c7360462-0748-4b79-8e7e-3f346b236e34.png)
 
 ---
-2. [GET]/todos/: id:  
-Click "details" behind the Description each Todo:
-![get](https://user-images.githubusercontent.com/78125534/232206046-bcf306a2-410e-408f-bcb1-848701e58fac.png)  
-You will route to show.ejs, and the page look like:
-![image](https://user-images.githubusercontent.com/78125534/232205894-039a0ab3-fde9-45fd-bd39-560e811f61cc.png)
+2. [GET]/api/todos/: id:  
+Use HTTP verb "GET" and type the url "http://localhost:8080/api/Todos/:id", then click "send" and you will see the single todos:
+![get_3](https://user-images.githubusercontent.com/78125534/232272992-e8b2803e-1117-4a2d-8c43-e6146e8e3e6e.png)
 ---
-3. [POST]/todos：  
-Click the link "Add new Todo" below the home page:
-![post](https://user-images.githubusercontent.com/78125534/232206245-cef0c8d3-f5be-4099-b1f1-dc6bf6a28bfe.png)  
-You will route to new.ejs, and the page look like:
-![image](https://user-images.githubusercontent.com/78125534/232206292-3fea4d2c-3b08-4099-a806-28528445a1a4.png)  
-Type the information of your new Todo, then click "submit" button:
-![post_2](https://user-images.githubusercontent.com/78125534/232206377-77c2f208-b053-4c90-b50d-68d32e6efb5d.png)  
-You will route to home page with new Todo you create:
-![post_3](https://user-images.githubusercontent.com/78125534/232206415-70664357-958d-49ff-a1dc-b7345652617a.png)
+3. [POST]/api/todos：  
+Use HTTP verb "POST" and type the url "http://localhost:8080/api/Todos", next type your new Todo information with json in "body", then click "send" and you will see your new todo:
+![POST](https://user-images.githubusercontent.com/78125534/232276856-c3660880-9576-41c0-b5a6-2c1857d8f74f.png)
+Use HTTP verb "GET" and type the url "http://localhost:8080/api/Todos", then click "send" and you will see the total todos with new Todo:
+![POST_2](https://user-images.githubusercontent.com/78125534/232276918-2bf1f5e3-d480-4023-ab8e-e07261c60dd4.png)
 ---
 4. [PUT]/todos/:id：  
-Click "details" of Todo you want to edit:
-![patch](https://user-images.githubusercontent.com/78125534/232206567-5bfaf2a3-6c8a-4cad-ad25-ffd86f0c113d.png)  
-Click the link "Edit Todo information", you will route to edit.ejs page:  
-![patch_5](https://user-images.githubusercontent.com/78125534/232207437-8f31fa0c-1257-42be-8873-058dba96eeb6.png)
-![image](https://user-images.githubusercontent.com/78125534/232206678-545e2a46-47a0-447c-9fc8-f64a9629302a.png)  
-Edit the information you want, the click "save" button:
-![patch_3](https://user-images.githubusercontent.com/78125534/232206756-f7757cd6-6f57-451f-a65b-3046e8fb5f1d.png)  
-You will route to the home page with editted Todo:
-![patch_4](https://user-images.githubusercontent.com/78125534/232206815-0a1dbe9f-8223-4dbd-8b70-095d5e9bf54a.png)
+Use HTTP verb "PUT" and type the url "http://localhost:8080/api/Todos/:id" with id of Todo you want to edit, next type your editting information with json in "body", then click "send" and you will see your editted todo:
+![PUT](https://user-images.githubusercontent.com/78125534/232277414-b3abf261-0435-4eaa-b929-b8768c6ff85a.png)  
+Use HTTP verb "GET" and type the url "http://localhost:8080/api/Todos", then click "send" and you will see the total todos with eddited Todo:
+![PUT_2](https://user-images.githubusercontent.com/78125534/232277554-e231bf96-ad62-4f63-af7e-bf99468ac2d5.png)
 ---
-5. [DELETE]/todos/:id：  
-Click "details" route to the single Todo information, and click "Delete" button:  
-![Screenshot from 2023-04-15 16-11-52](https://user-images.githubusercontent.com/78125534/232205705-c60ef72f-bcd9-4307-aaad-2aef2ddba355.png)
-![Screenshot from 2023-04-15 16-12-09](https://user-images.githubusercontent.com/78125534/232205710-0bfa916e-6e9b-41bc-9254-91699b9d3dc2.png)  
-then it will route to the Home page without deleted Todo:  
-![Screenshot from 2023-04-15 16-14-31](https://user-images.githubusercontent.com/78125534/232205731-80c35976-f116-4a59-9b85-99f41ce4927b.png)
+5. [DELETE]/api/todos/:id：  
+Use HTTP verb "DELETE" and type the url "http://localhost:8080/api/Todos/:id" with id of Todo you want to delete, then click "send" and you will see "Todo deleted successfully":
+![DELETE](https://user-images.githubusercontent.com/78125534/232277849-ae1c3359-5902-49d3-add4-13fa20bf2c84.png)
+Use HTTP verb "GET" and type the url "http://localhost:8080/api/Todos", then click "send" and you will see the total todos without deleted Todo:
+![DELETE_2](https://user-images.githubusercontent.com/78125534/232277975-f3fd197b-88a7-4816-8055-05472c91c777.png)
+
 
 
 
